@@ -1,0 +1,108 @@
+
+
+
+
+kdsakdsakdlsakdksaldksaölkdösakdölsadksad
+dsladkölsakdlsa
+kdsadökdsald
+kakakakk
+lololoooooldsa
+
+sadsandlknlkiepuiuoiuoiewsajdqfpqbufdlkkjdsuksajlksajdlkjsakdirlkjknlramsusakdsvoodsnivrnsandsakjdlksajsad
+dsakdklknsadlknsalkndsanlkdladndakdsalkndkdsa
+
+Mitä opit tässä luvussa
+Ymmärtää, mitä hyötyä versionhallinnan käyttämisestä on.
+Osaa luoda Git-projektin.
+Tietää, mikä on commit, ja osaa luoda sellaisen.
+Ymmärtää, missä eri tiloissa muutos on, kun sitä lisätään commitiin, ja miten muutoksia voi perua, ennen kuin ne on lisätty committiin.
+Tietää, mikä on main-haara.
+Osaa lukea komennon git status tulostusta.
+Osaa luoda GitHubissa repositorion, ja lisätä sen projektin etärepositorioksi.
+Osaa käyttää GitHubia SSH-yhteyden kautta.
+Osaa julkaista paikallisesti luomansa commitit.
+Osaa hakea etärepositoriosta uusimmat commitit.
+Osaa asettaa muutoksia stashiin, ja siirtää niitä takaisin näkyville.
+Ymmärtää, mikä on merge-commit.
+Ymmärtää, miten merge-konflikti muodostuu.
+Osaa ratkaista merge-konfliktin.
+Osaa tarkastella GitHubissa ja komentoriviltä vanhoja committeja, ja osaa siirtyä takaisin main-haaran viimeisimpään commitiin.
+Osaa kloonata Git-projektin omalle koneelleen.
+Ymmärtää, miten Gitiä ja GitHubia voidaan hyödyntää yhteistyössä.
+Tietää, mikä on issue.
+Tietää, mitä tarkoittaa forkkaaminen.
+Tietää, mikä on pull request.
+Osaa hakea tietoa Gitin käytöstä internetistä.
+Sisällysluettelo
+1
+Git-projekti
+2
+GitHub - projektin jakaminen
+3
+Synkronointiongelmat: stash ja mergekonflikti
+4
+Muutosten seuranta ja muutosehdotukset
+Tehtävät tässä luvussa
+Versionhallinta: Git ja GitHub
+Tässä osassa käsitellään versionhallintaa. Versionhallinta tarkoittaa palvelua, jonka avulla voidaan päivittää erilaisia tiedostoja hallitusti, tarkastella päivityshistoriaa ja tarvittaessa palauttaa takaisin jokin aiempi versio. Tiedostojärjestelmän hakemistorakenteessa uudempi versio samasta tiedostosta korvaa aiemman, eikä aiempaa versiota sen jälkeen enää ole olemassa.
+
+Versionhallintaa käytetään hyvin yleisesti ohjelmistoprojekteissa ohjelmakoodia sisältävien tiedostojen säilyttämiseen, mutta se soveltuu kaikenlaisiin projekteihin, joissa käsitellään tiedostoja. Sen käyttöön on pääsääntöisesti kaksi motiivia. 1) Versionhallinnan avulla voidaan pitää varmuuskopioita sekä ohjelman nykyisestä että aiemmista versiosta. 2) Lisäksi sen avulla voidaan helposti jakaa ohjelmakoodia tai tiedostoja muille sekä osallistua muiden projekteihin.
+
+Versionhallintatyökalujen avulla on mahdollista merkitä jokin projektin tila sellaiseksi, että siihen voidaan palata myöhemmin. Näin ollen, jos jotain menee pieleen uusien ominaisuuksien kehityksessä, voidaan palata aikaisempaan toimivaan versioon. Versionhallintajärjestelmä säilyttää kaikki merkityt tilat. Tällöin nähdään, miten ohjelman kehitys on edennyt, milloin ja millaisia muutoksia on tehty, ja kenen toimesta. Tämä helpottaa myös esimerkiksi erilaisten ohjelman toiminnassa esiintyvien virheiden etsimistä. Alan slangissa tätä voidaan kutsua bugien metsästykseksi.
+
+Toisin kuin useiden mielikuvissa, ohjelmiston kehittäminen on lähes aina ryhmätyötä ja siihen osallistuu useita henkilöitä. Versionhallintatyökalujen avulla ihmisten on mahdollista käyttää ja kehittää toistensa tekemää koodia, jopa tapaamatta koskaan fyysisesti. Projekteille on mahdollista antaa niin sanallista palautetta, kuten vikailmoituksia, kuin konkreettisia parannusehdotuksia koodin muodossa. Lisäksi kaikki tekijät näkevät koodin kehityskaaren, jolloin on helpompi tehdä yhteistyötä.
+
+Voit lukea versionhallinnan hyödyistä Atlassian Bitbucketin sivulta. Jos haluat lukea perusteellisemman tekstin, katso esimerkiksi tämä sivu (kohta "Why use version control").
+
+Git on eräs versionhallintatyökalu. Myös tämän kurssin materiaalien hallintaan käytetään gitiä.Tässä osassa käsitellään Gitin ja siihen liittyvän GitHub-palvelun käyttöä erityisesti koodiprojektien kontekstissa.
+
+Yleisesti Gitistä
+Gitin on luonut Helsingin yliopiston tietojenkäsittelytieteen laitoksella 90-luvulla opiskellut Linus Torvalds. Torvalds tunnetaan luultavasti paremmin Linux-käyttöjärjestelmän, erityisesti sen ytimen (engl. kernel) kehittäjänä. Linux toimii “sydämenä” myös esimerkiksi Googlen Androidille. Lähes kaikissa osaston koneissa on Linux-käyttöjärjestelmä. Torvalds kehitti Gitin nimenomaan omiin tarpeisiinsa ohjelmoidessaan Linux käyttöjärjestelmää. Hän tarvitsi työkalun, jolla voi säilyttää eri versioita omasta koodistaan, sekä jakaa sitä muiden kehitykseen osallistuneiden kanssa.
+
+GitHub on myöhemmin kehitetty kaupallinen palvelu, jonka avulla voidaan säilyttää ja julkaista Git-projekteja. GitHubiin verrannollisia palveluita on useita, kuten esimerkiksi GitLab sekä yliopiston oma GitLab-asennus osoitteessa https://version.helsinki.fi/. GitHub on näistä palveluista vanhin ja laajin. Se on myös yleisimmin käytössä ja siksi tämä osa käsittelee GitHubia. Vaikka se on kaupallinen palvelu, niin sen peruskäyttö on maksutonta.
+
+Gitiä ja GitHubia käytetään yliopistolla yksilö- ja ryhmätöissä sekä yleisesti työelämässä. Niiden käyttö ei rajoitu pelkästään koodiin, vaan moni pitää esimerkiksi kandinsa tai gradunsa Gitissä. Tässä osassa keskitytään lähinnä koodin jakamiseen Gitin avulla GitHubissa, ja siinä usein kohdattuihin ongelmiin. Lisää Gitistä oppii esimerkiksi kursseilla Ohjelmistotekniikka ja Ohjelmistotuotanto.
+
+Tehtävä:
+GitHub-tunnuksen luonti
+Pisteet
+1/1
+Ohjeet
+Luo aluksi GitHub-tunnus osoitteessa https://github.com/ . GitHubiin rakennetaan eräänlainen koodiportfolio, joka usein linkataan myös CV:seen, kannattaa siis valita siisti käyttäjänimi.
+
+Git löytyy laitoksen koneilta ja Ubuntusta valmiiksi. Muussa tapauksessa sen voi asentaa esimerkiksi täältä, tai pakettienhallintajärjestelmän kautta. Käytämme näissä ohjeissa Gitiä terminaalin kautta.
+
+
+Tehtävä:
+Gitin konfigurointi
+Pisteet
+1/1
+Ohjeet
+Konfiguroidaan hieman Gitiä. Liitä nimesi ja sähköpostiosoitteesi Gitiin niin, että kaikkiin projekteihesi tekemät muutokset liitetään sinuun seuraavilla komennoilla:
+
+
+git config --global user.name "Minun Nimeni"
+git config --global user.email sähköposti@osoite.com
+Jos et halua sähköpostiasi julkiseksi, GitHub tarjoaa erityisen noreply-sähköpostiosoitteen.
+
+Jos et ole tottunut Vimin käyttäjä, muuta Gitin oletuseditoriksi nano seuraavalla komennolla:
+
+
+git config --global core.editor nano
+Windowsissa vaihda nanon paikalle notepad.
+
+
+Noreply-osoitteet uusilla käyttäjillä
+Huomaa Note-kohta ylläolevassa tehtävässä linkatulla sivulla! Noreplyn muoto riippuu siitä, milloin olet luonut käyttäjätunnuksen. Jos loit tunnuksesi vasta tällä kurssilla, saat asetettua noreply-sähköpostiosoitteen vasta kun asetat käyttäjätilisi asetuksista sähköpostiosoitteesi yksityiseksi.
+
+Aloita opiskelu...
+Siirry ensimmäiseen aiheeseen
+
+Seuraava sivu:
+Git-projekti
+Tietoja
+MOOC keskus luo mukautettuja verkkokursseja Helsingin yliopistolle. Se on vastuussa kaikista suosituista kursseista, jotka ovat olleet käytössä mooc.fi osoitteessa vuodesta 2012. Kurssien alusta on kehitetty talon sisällä MOOC-keskuksessa yliopiston työntekijöiden ja opiskelijoiden voimin.
+
+Tämä verkkosivusto pyörii Helsingin yliopiston MOOC-keskuksen kehittämällä avoimen lähdekoodin ohjelmistolla. Anna projektille tähti Githubissa: Project Github.
+Yksityisyys
+Saavutettavuusseloste
