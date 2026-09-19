@@ -106,3 +106,4 @@ MOOC keskus luo mukautettuja verkkokursseja Helsingin yliopistolle. Se on vastuu
 Tämä verkkosivusto pyörii Helsingin yliopiston MOOC-keskuksen kehittämällä avoimen lähdekoodin ohjelmistolla. Anna projektille tähti Githubissa: Project Github.
 Yksityisyys
 Saavutettavuusseloste
+uusi rivi
